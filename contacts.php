@@ -22,20 +22,20 @@ $stmt = $contact->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
-if($num>0 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+if ($num > 0 && $_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // contacts array
-    $contacts_arr=array();
-    $contacts_arr["contacts"]=array();
+    $contacts_arr = array();
+    $contacts_arr["contacts"] = array();
 
     // retrieve our table contents
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // extract row
         // this will make $row['name'] to
         // just $name only
         extract($row);
 
-        $contacts_item=array(
+        $contacts_item = array(
             "id" => $id,
             "name" => $name,
             "email" => $email,
@@ -51,8 +51,7 @@ if($num>0 && $_SERVER['REQUEST_METHOD'] === 'GET'){
 
     // show contacts data in json format
     echo json_encode($contacts_arr);
-}
-else if($_SERVER['REQUEST_METHOD'] !== 'GET'){
+} else if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 
     // set response code to 400 Bad Request
     http_response_code(400);
@@ -60,8 +59,7 @@ else if($_SERVER['REQUEST_METHOD'] !== 'GET'){
     echo json_encode(
         array("message" => "Bad request type.")
     );
-}
-else{
+} else {
     // set response code to 404 Not found
     http_response_code(404);
 
@@ -69,4 +67,3 @@ else{
         array("message" => "Contacts not found")
     );
 }
-

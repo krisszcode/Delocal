@@ -15,7 +15,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // prepare contact object
-$contact = new contact($db);
+$contact = new Contact($db);
 
 // get id of contact to be edited
 $data = json_decode(file_get_contents("php://input"));
@@ -27,23 +27,20 @@ $contact->id = $data->id;
 $contact->email = $data->email;
 
 // update the contact
-if( $_SERVER['REQUEST_METHOD'] === 'PUT'){
-    $contact->update();
+if ($contact->update() && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+
     // set response code to 200 ok
     http_response_code(200);
 
     echo json_encode(array("message" => "contact was updated."));
-}
-elseif($_SERVER['REQUEST_METHOD'] !== 'PUT'){
+} elseif ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
     http_response_code(400);
 
     echo json_encode(array("message" => "Bad request type."));
-}
-else{
+} else {
 
     // set response code to 503 (service unavailable)
     http_response_code(503);
 
     echo json_encode(array("message" => "Unable to update contact."));
 }
-?>

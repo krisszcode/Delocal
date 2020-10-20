@@ -15,7 +15,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // prepare contact object
-$contact = new contact($db);
+$contact = new Contact($db);
 
 // set ID property of record to read
 $contact->id = isset($_GET['id']) ? $_GET['id'] : die();
@@ -23,7 +23,7 @@ $contact->id = isset($_GET['id']) ? $_GET['id'] : die();
 // read the details of contact to be edited
 $contact->readOne();
 
-if($contact->name!=null && $_SERVER['REQUEST_METHOD'] === 'GET'){
+if ($contact->name != null && $_SERVER['REQUEST_METHOD'] === 'GET') {
     $contact_arr = array(
         "id" =>  $contact->id,
         "name" => $contact->name,
@@ -37,16 +37,13 @@ if($contact->name!=null && $_SERVER['REQUEST_METHOD'] === 'GET'){
 
     // make it json format
     echo json_encode($contact_arr);
-}
-elseif($_SERVER['REQUEST_METHOD'] !== 'GET'){
+} elseif ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     http_response_code(400);
 
     echo json_encode(array("message" => "Bad request type."));
-}
-else{
+} else {
     // set response code to 404 Not found
     http_response_code(404);
 
     echo json_encode(array("message" => "contact does not exist."));
 }
-?>
