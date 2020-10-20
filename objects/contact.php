@@ -97,5 +97,35 @@ class Contact{
         $this->phone_number = $row['phone_number'];
         $this->address = $row['address'];
     }
+
+    // update the product
+    function update(){
+
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    email = :email
+                WHERE
+                    id = :id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+
+        // bind new values
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':email', $this->email);
+
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
 }
 ?>

@@ -9,6 +9,7 @@ header('Content-Type: application/json');
 // include database and object files
 include_once 'config/dbconfig.php';
 include_once 'objects/contact.php';
+include_once 'index.php';
 
 // get database connection
 $database = new Database();
@@ -18,7 +19,7 @@ $db = $database->getConnection();
 $contact = new contact($db);
 
 // set ID property of record to read
-$contact->id = isset($_GET['id']) ? $_GET['id'] : die();
+$contact->id = $id;
 
 // read the details of contact to be edited
 $contact->readOne();
