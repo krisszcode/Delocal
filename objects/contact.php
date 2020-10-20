@@ -40,24 +40,22 @@ class Contact{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
+                    name=:name, email=:email, phone_number=:phone_number, address=:address";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
         $this->name=htmlspecialchars(strip_tags($this->name));
-        $this->price=htmlspecialchars(strip_tags($this->price));
-        $this->description=htmlspecialchars(strip_tags($this->description));
-        $this->category_id=htmlspecialchars(strip_tags($this->category_id));
-        $this->created=htmlspecialchars(strip_tags($this->created));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+        $this->phone_number=htmlspecialchars(strip_tags($this->phone_number));
+        $this->address=htmlspecialchars(strip_tags($this->address));
 
         // bind values
         $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":category_id", $this->category_id);
-        $stmt->bindParam(":created", $this->created);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":phone_number", $this->phone_number);
+        $stmt->bindParam(":address", $this->address);
 
         // execute query
         if($stmt->execute()){
