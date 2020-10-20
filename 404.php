@@ -1,5 +1,6 @@
 <?php
 
+// set response code
 http_response_code(404);
 
 // tell the user

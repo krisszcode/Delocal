@@ -26,12 +26,12 @@ if(
     !empty($data->name) &&
     !empty($data->email) &&
     !empty($data->phone_number) &&
-    !empty($data->address)
+    !empty($data->address) &&  $_SERVER['REQUEST_METHOD'] === 'POST'
 ){
 
     // set contact property values
     $contact->name = $data->name;
-    $contact->email = $data->email;
+    $contact->price = $data->email;
     $contact->phone_number = $data->phone_number;
     $contact->address = $data->address;
 
@@ -41,7 +41,6 @@ if(
         // set response code - 201 created
         http_response_code(201);
 
-        // tell the user
         echo json_encode(array("message" => "contact was created."));
     }
 
@@ -51,18 +50,18 @@ if(
         // set response code - 503 service unavailable
         http_response_code(503);
 
-        // tell the user
         echo json_encode(array("message" => "Unable to create contact."));
     }
 }
-
-// tell the user data is incomplete
-else{
-
-    // set response code - 400 bad request
+elseif( $_SERVER['REQUEST_METHOD'] !== 'POST'){
     http_response_code(400);
 
-    // tell the user
-    echo json_encode(array("message" => "Unable to create contact. Data is incomplete."));
+    echo json_encode(array("message" => "Bad request type."));
+}
+else{
+
+    http_response_code(503);
+
+    echo json_encode(array("message" => "Data is incomplete."));
 }
 ?>

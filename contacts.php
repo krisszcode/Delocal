@@ -57,7 +57,6 @@ else if($_SERVER['REQUEST_METHOD'] !== 'GET'){
     // set response code to 400 Bad Request
     http_response_code(400);
 
-
     echo json_encode(
         array("message" => "Bad request type.")
     );
@@ -66,7 +65,6 @@ else{
     // set response code to 404 Not found
     http_response_code(404);
 
-    // tell the user no contact found
     echo json_encode(
         array("message" => "Contacts not found")
     );

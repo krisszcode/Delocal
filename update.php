@@ -27,22 +27,23 @@ $contact->id = $data->id;
 $contact->email = $data->email;
 
 // update the contact
-if($contact->update()){
+if($contact->update() && $_SERVER['REQUEST_METHOD'] === 'PUT'){
 
-    // set response code - 200 ok
+    // set response code to 200 ok
     http_response_code(200);
 
-    // tell the user
     echo json_encode(array("message" => "contact was updated."));
 }
+elseif($_SERVER['REQUEST_METHOD'] !== 'PUT'){
+    http_response_code(400);
 
-// if unable to update the contact, tell the user
+    echo json_encode(array("message" => "Bad request type."));
+}
 else{
 
-    // set response code - 503 service unavailable
+    // set response code to 503 (service unavailable)
     http_response_code(503);
 
-    // tell the user
     echo json_encode(array("message" => "Unable to update contact."));
 }
 ?>
