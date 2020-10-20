@@ -17,7 +17,6 @@ $db = $database->getConnection();
 
 $contact = new Contact($db);
 
-
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
@@ -31,12 +30,12 @@ if(
 
     // set contact property values
     $contact->name = $data->name;
-    $contact->price = $data->email;
+    $contact->email = $data->email;
     $contact->phone_number = $data->phone_number;
     $contact->address = $data->address;
 
     // create the contact
-    if($contact->create()){
+    if( $contact->create()){
 
         // set response code - 201 created
         http_response_code(201);
@@ -44,7 +43,6 @@ if(
         echo json_encode(array("message" => "contact was created."));
     }
 
-    // if unable to create the contact, tell the user
     else{
 
         // set response code - 503 service unavailable

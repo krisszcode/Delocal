@@ -3,6 +3,7 @@
 // fetching the id from the url
 $uri = $_SERVER["REQUEST_URI"];
 $uriArray = explode('/', $uri);
+$id = NULL;
 
 if($uriArray[1]=== 'contacts' && count($uriArray) === 3)
 {

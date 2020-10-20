@@ -24,17 +24,15 @@ $contact->id = isset($_GET['id']) ? $_GET['id'] : die();
 $contact->readOne();
 
 if($contact->name!=null && $_SERVER['REQUEST_METHOD'] === 'GET'){
-    // create array
     $contact_arr = array(
         "id" =>  $contact->id,
         "name" => $contact->name,
         "email" => $contact->email,
         "phone_number" => $contact->phone_number,
-        "address" => $contact->address,
-
+        "address" => $contact->address
     );
 
-    // set response code - 200 OK
+    // set response code to 200 OK
     http_response_code(200);
 
     // make it json format
@@ -46,7 +44,7 @@ elseif($_SERVER['REQUEST_METHOD'] !== 'GET'){
     echo json_encode(array("message" => "Bad request type."));
 }
 else{
-    // set response code - 404 Not found
+    // set response code to 404 Not found
     http_response_code(404);
 
     echo json_encode(array("message" => "contact does not exist."));
