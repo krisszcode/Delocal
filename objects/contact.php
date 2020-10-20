@@ -65,5 +65,37 @@ class Contact{
         return false;
 
     }
+
+
+    function readOne(){
+
+        // query to read single record
+        $query = "SELECT
+                    c.name, c.email,c.phone_number,c.address
+                FROM
+                    " . $this->table_name . " c
+                WHERE
+                    c.id = ?
+                LIMIT
+                    0,1";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->id);
+
+        // execute query
+        $stmt->execute();
+
+        // get retrieved row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // set values to object properties
+        $this->name = $row['name'];
+        $this->email = $row['email'];
+        $this->phone_number = $row['phone_number'];
+        $this->address = $row['address'];
+    }
 }
 ?>
