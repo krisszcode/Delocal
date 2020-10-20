@@ -28,7 +28,7 @@
  ```sh
 {
     "id": "11",
-    "email": "erzsi@gmail.com",
+    "email": "erzsi@gmail.com"
 }
 ```
 
