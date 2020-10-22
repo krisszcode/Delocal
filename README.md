@@ -1,12 +1,12 @@
-# Delocal Zrt. Homework
+# CRUD REST API for php
 
 ### Installation
 
 1. Install XAMPP.
 2. Start Apache and MySQL.
 3. Go to localhost/phpmyadmin.
-4. Create a new database with utf8_general_ci encode type and with name delocal.
-5. Run the sql command on this database, which can be found in the database folder, and reconfig the dbconfig file with your phpmyadmin settings.
+4. Create a new database with utf8_general_ci encode type and with name db.
+5. Create a db with utf8 and auto increment id, and reconfig the dbconfig file with your phpmyadmin settings.
 7. cd to the root folder of this project in cmd.
 8. Run php -S localhost:8080.
 9. You can install Postman for easy testing.
@@ -18,8 +18,8 @@
   - On the /create route you can add a new contact like(POST):
   ```sh
 {
-    "name": "jani",
-    "email": "janika@gmail.com",
+    "name": "janos",
+    "email": "janos@gmail.com",
     "phone_number": "0646152456",
     "address": "4444 Miskolc, Kozepszer u. 33."
 }
@@ -28,7 +28,7 @@
  ```sh
 {
     "id": "11",
-    "email": "erzsi@gmail.com"
+    "email": "mate@gmail.com"
 }
 ```
 
