@@ -2,13 +2,13 @@
 
 ### Installation
 
-1. Install XAMPP.
+1. Install XAMPP or MAMP.
 2. Start Apache and MySQL.
-3. Go to localhost/phpmyadmin.
+3. Go to localhost:80/phpmyadmin in case of XAMPP or in MAMP localhost:8888/phpmyadmin.
 4. Import the database.sql from the database folder to your phpmyadmin.
-7. cd to the root folder of this project in cmd.
-8. Run php -S localhost:8080.
-9. You can install Postman for easy testing.
+5. move to the root folder of this project in terminal.
+6. Run 'php -S localhost:8080'.
+7. You can install Postman for easy testing.
 
 ### Usage
 
