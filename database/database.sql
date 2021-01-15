@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `falatozz`
 --
-CREATE DATABASE IF NOT EXISTS Falatozz DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE Falatozz;
+CREATE DATABASE IF NOT EXISTS falatozz DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE falatozz;
 -- --------------------------------------------------------
 
 --
