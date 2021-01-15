@@ -13,19 +13,19 @@ if($uriArray[1]=== 'contacts' && count($uriArray) === 3)
 // using the Front Controller design pattern
 switch ($_SERVER['REQUEST_URI']) {
     case '/contacts':
-        include 'contacts.php';
+        include './requests/contacts.php';
         break;
     case '/update':
-        include 'update.php';
+        include './requests/update.php';
         break;
     case '/contacts/'.$id.'':
         $_GET['id'] = $id;
-        include 'read_one.php';
+        include './requests/read_one.php';
         break;
     case '/create':
-        include 'create.php';
+        include './requests/create.php';
         break;
     default:
-        include '404.php';
+        include './requests/404.php';
         break;
 }

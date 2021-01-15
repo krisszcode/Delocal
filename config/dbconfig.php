@@ -4,7 +4,7 @@ class Database
 
     // specifying database credentials
     private $host = "localhost";
-    private $db_name = "delocal";
+    private $db_name = "falatozz";
     private $username = "root";
     private $password = "";
     public $conn;

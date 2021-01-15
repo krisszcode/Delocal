@@ -44,7 +44,7 @@ if(
     }
 
     else{
-
+        
         // set response code - 503 service unavailable
         http_response_code(503);
 

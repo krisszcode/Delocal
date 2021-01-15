@@ -5,8 +5,7 @@
 1. Install XAMPP.
 2. Start Apache and MySQL.
 3. Go to localhost/phpmyadmin.
-4. Create a new database with utf8_general_ci encode type and with name db, you can use the mysql.sql file in the database folder.
-5. Reconfig the dbconfig file with your phpmyadmin settings.
+4. Import the database.sql from the database folder to your phpmyadmin.
 7. cd to the root folder of this project in cmd.
 8. Run php -S localhost:8080.
 9. You can install Postman for easy testing.
@@ -18,7 +17,7 @@
   - On the /create route you can add a new contact like(POST):
   ```sh
 {
-    "name": "janos",
+    "name": "Nagy Janos",
     "email": "janos@gmail.com",
     "phone_number": "0646152456",
     "address": "4444 Miskolc, Kozepszer u. 33."
